@@ -1,0 +1,124 @@
+{
+  "project_name": "Minnu's Valentine Proposal",
+  "design_philosophy": {
+    "identity": "E1 - The Anti-AI Designer",
+    "core_principles": [
+      "Fusion over Imitation: Rose Gold Luxury mixed with Gen Z Internet Humor.",
+      "Emotion First: The journey from 'Curiosity' to 'Frustration' (running button) to 'Joy' (Celebration).",
+      "Content is King: The 'Dubai Kidnap' joke is the narrative anchor.",
+      "Negative Space: Don't clutter. Let the question breathe."
+    ],
+    "hall_of_shame": [
+      "No generic red/white valentine templates.",
+      "No static buttons.",
+      "No boring 'Arial' or 'Times New Roman'."
+    ]
+  },
+  "typography": {
+    "headings": {
+      "family": "Playfair Display, serif",
+      "weights": ["700", "900"],
+      "usage": "Main Question, Big Impact Statements",
+      "instructions": "Use for 'Will you be my Valentine?' and 'Minnu'. Make it elegant but massive (text-5xl md:text-7xl)."
+    },
+    "body": {
+      "family": "Nunito, sans-serif",
+      "weights": ["400", "600", "800"],
+      "usage": "Subtitles, Button Text, Jokes",
+      "instructions": "Round, friendly, and readable. Matches the 'playful' vibe."
+    },
+    "installation": "@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap');"
+  },
+  "colors": {
+    "palette": {
+      "rose_gold": "#B76E79",
+      "soft_pink": "#FFD1DC",
+      "cream": "#FFFDD0",
+      "deep_burgundy": "#5D2E46",
+      "gold_accent": "#D4AF37",
+      "playful_teal": "#73C2FB"
+    },
+    "theme_strategy": {
+      "background": "bg-gradient-to-br from-[#FFF0F5] to-[#FFD1DC]",
+      "text_primary": "text-[#5D2E46]",
+      "text_secondary": "text-[#B76E79]",
+      "primary_button": "bg-[#B76E79] hover:bg-[#9E5A63] text-white shadow-xl shadow-rose-200",
+      "secondary_button": "bg-white text-[#B76E79] border-2 border-[#B76E79] hover:bg-rose-50"
+    },
+    "forbidden_colors": ["#1B93A4", "#7351B7"]
+  },
+  "layout": {
+    "grid_system": "Single Page Flow (Centering Allowed for this specific use case as it is a focus-driven landing page)",
+    "spacing": "Generous padding (p-8 to p-12) to frame the question.",
+    "z_index": {
+      "background": "-10",
+      "floating_elements": "0",
+      "content": "10",
+      "overlay": "50"
+    }
+  },
+  "components": {
+    "buttons": {
+      "yes_button": {
+        "style": "pill-shaped, massive shadow, pulsing animation",
+        "behavior": "Triggers celebration, confetti, sound"
+      },
+      "no_button": {
+        "style": "ghost or outline, smaller than Yes button",
+        "behavior": "RUNAWAY LOGIC: On hover/touch, moves to random coordinate within viewport. Must NEVER be clickable."
+      }
+    },
+    "visual_enhancers": {
+      "floating_hearts": "Background particle system of SVG hearts floating upward.",
+      "dubai_card": "A polaroid-style card revealing the 'Dubai Plan' after she says Yes.",
+      "emoji_rain": "Falling 🙄 emojis mixed with ❤️ when specific triggers happen."
+    }
+  },
+  "motion": {
+    "library": "framer-motion",
+    "animations": {
+      "entrance": "FadeInUp with staggerChildren for text lines.",
+      "button_pulse": "Scale 1.05 to 1.0 infinitely.",
+      "runaway": "Spring transition for the 'No' button movement (type: 'spring', stiffness: 300).",
+      "celebration": "Explosion effect using canvas-confetti."
+    }
+  },
+  "images": {
+    "background_texture": {
+      "url": "https://images.unsplash.com/photo-1675081407218-a191a6930112?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDZ8MHwxfHNlYXJjaHwzfHxyb21hbnRpYyUyMHJvc2UlMjBnb2xkJTIwYmFja2dyb3VuZCUyMHRleHR1cmV8ZW58MHx8fHwxNzcxMDM1NDg4fDA&ixlib=rb-4.1.0&q=85",
+      "alt": "Soft Rose Gold Texture",
+      "usage": "Opacity 0.1 overlay on main background"
+    },
+    "dubai_joke": {
+      "url": "https://images.unsplash.com/photo-1697360855756-5e481ecc4ae6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDN8MHwxfHNlYXJjaHw0fHxkdWJhaSUyMHNreWxpbmUlMjBuaWdodCUyMHZpZXd8ZW58MHx8fHwxNzcxMDM1NDk0fDA&ixlib=rb-4.1.0&q=85",
+      "alt": "Dubai Skyline at Night",
+      "usage": "Revealed in the 'Kidnap Plan' modal/section"
+    },
+    "cute_reaction": {
+      "url": "https://images.unsplash.com/photo-1769117320954-626bb550b890?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwzfHxjdXRlJTIwcHVwcHklMjBsb29raW5nJTIwaW5ub2NlbnQlMjByb2xsaW5nJTIwZXllc3xlbnwwfHx8fDE3NzEwMzU0OTZ8MA&ixlib=rb-4.1.0&q=85",
+      "alt": "Cute Puppy",
+      "usage": "Use if she tries to click 'No' too many times (if you can even catch it)"
+    }
+  },
+  "libraries": {
+    "animation": "framer-motion",
+    "confetti": "canvas-confetti",
+    "icons": "lucide-react",
+    "toast": "sonner"
+  },
+  "instructions_to_main_agent": [
+    "1. Setup: Install 'framer-motion' and 'canvas-confetti'.",
+    "2. Structure: Create a Main Container that centers content but allows the 'No' button to roam freely within the viewport.",
+    "3. Logic: The 'No' button must have 'position: fixed' or 'absolute' when it starts moving to ensure it doesn't break layout flow.",
+    "4. Mobile: Ensure the 'No' button doesn't go off-screen on mobile. Calculate viewport bounds.",
+    "5. Sound: Use a free joyful sound effect on 'Yes' click if possible (or just visual noise).",
+    "6. Inside Joke: After 'Yes', show a card saying 'Pack your bags, we are going to Dubai! (Just kidding... unless?)' with the Dubai image.",
+    "7. Emoji: Use the 🙄 emoji as a recurring motif in the background or as a reaction."
+  ],
+  "universal_guidelines": [
+    "Use 'framer-motion' for all entrance and interaction animations.",
+    "Ensure high contrast for text over the rose gold background.",
+    "Do not use default Shadcn buttons without heavy customization (roundness, shadow).",
+    "Add 'data-testid' to the Yes/No buttons for testing."
+  ]
+}
