@@ -1,34 +1,364 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+.App {
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  font-family: 'Nunito', sans-serif;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
+.stage-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+}
+
+/* Intro Stage */
+.intro-stage {
+  background: linear-gradient(135deg, #FFF0F5 0%, #FFD1DC 100%);
+}
+
+.intro-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.intro-heart {
+  filter: drop-shadow(0 10px 30px rgba(183, 110, 121, 0.4));
+}
+
+.intro-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 900;
+  color: #5D2E46;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+/* Question Stage */
+.question-stage {
+  background: linear-gradient(135deg, #FFF0F5 0%, #FFE4E9 50%, #FFD1DC 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.question-stage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://images.unsplash.com/photo-1675081407218-a191a6930112?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDZ8MHwxfHNlYXJjaHwzfHxyb21hbnRpYyUyMHJvc2UlMjBnb2xkJTIwYmFja2dyb3VuZCUyMHRleHR1cmV8ZW58MHx8fHwxNzcxMDM1NDg4fDA&ixlib=rb-4.1.0&q=85');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.floating-hearts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-heart {
+  position: absolute;
+  font-size: 1.5rem;
+  user-select: none;
+}
+
+.question-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  max-width: 800px;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  border-radius: 30px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 20px 60px rgba(183, 110, 121, 0.2);
+}
+
+.question-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 900;
+  color: #5D2E46;
+  text-align: center;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.highlight-name {
+  color: #B76E79;
+  display: inline-block;
+  position: relative;
+}
+
+.question-subtitle {
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: #B76E79;
+  text-align: center;
+  font-weight: 600;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  position: relative;
+  min-height: 80px;
+}
+
+.yes-button {
+  background: linear-gradient(135deg, #B76E79 0%, #9E5A63 100%);
+  color: white;
+  border: none;
+  padding: 1.5rem 3rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 800;
+  font-family: 'Nunito', sans-serif;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 10px 40px rgba(183, 110, 121, 0.4),
+              0 0 0 4px rgba(255, 255, 255, 0.5);
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  z-index: 100;
+}
+
+.yes-button:hover {
+  box-shadow: 0 15px 50px rgba(183, 110, 121, 0.6),
+              0 0 0 6px rgba(255, 255, 255, 0.6);
+}
+
+.button-icon {
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.2); }
+  50% { transform: scale(1); }
+}
+
+.no-button {
+  background: white;
+  color: #B76E79;
+  border: 2px solid #B76E79;
+  padding: 1rem 2rem;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-weight: 600;
+  font-family: 'Nunito', sans-serif;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(183, 110, 121, 0.2);
+  transition: background 0.2s, transform 0.2s;
+  z-index: 50;
+}
+
+.no-button:hover {
+  background: rgba(255, 209, 220, 0.3);
+}
+
+.hint-text {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  color: #B76E79;
+  text-align: center;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+/* Celebration Stage */
+.celebration-stage {
+  background: linear-gradient(135deg, 
+    #FFD1DC 0%, 
+    #FFF0F5 25%,
+    #FFE4E9 50%,
+    #FFF0F5 75%,
+    #FFD1DC 100%
+  );
+  animation: celebration-gradient 3s ease infinite;
+}
+
+@keyframes celebration-gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.celebration-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 900px;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(24px);
+  border-radius: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 30px 80px rgba(183, 110, 121, 0.3);
+  position: relative;
+}
+
+.celebration-icon {
+  filter: drop-shadow(0 5px 20px rgba(212, 175, 55, 0.5));
+}
+
+.celebration-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 900;
+  color: #5D2E46;
+  text-align: center;
+  margin: 0;
+}
+
+.celebration-message {
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  color: #B76E79;
+  text-align: center;
+  line-height: 1.8;
+  font-weight: 600;
+}
+
+.dubai-card {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 2rem;
+  perspective: 1000px;
+}
+
+.dubai-card-content {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 241, 245, 0.95) 100%);
+  padding: 2rem;
+  border-radius: 20px;
+  border: 2px solid rgba(183, 110, 121, 0.3);
+  box-shadow: 0 10px 30px rgba(183, 110, 121, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.plane-icon {
+  color: #73C2FB;
+  animation: plane-fly 2s ease-in-out infinite;
+}
+
+@keyframes plane-fly {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  50% { transform: translateX(10px) rotate(5deg); }
+}
+
+.dubai-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #5D2E46;
+  margin: 0;
+}
+
+.dubai-text {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.1rem;
+  color: #B76E79;
+  text-align: center;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.dubai-joke {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #9E5A63;
+}
+
+.dubai-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-top: 1rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.heart-burst {
+  position: absolute;
+  font-size: 10rem;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .question-content {
+    padding: 2rem 1.5rem;
+  }
+  
+  .buttons-container {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+    gap: 1.5rem;
+  }
+  
+  .yes-button {
+    padding: 1.2rem 2.5rem;
+  }
+  
+  .no-button {
+    padding: 0.8rem 1.5rem;
+  }
+  
+  .dubai-card-content {
+    padding: 1.5rem;
+  }
+  
+  .dubai-image {
+    height: 150px;
+  }
 }
 
-.App-link {
-    color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+@media (max-width: 480px) {
+  .stage-container {
+    padding: 1rem;
+  }
+  
+  .question-content {
+    padding: 1.5rem 1rem;
+  }
+  
+  .floating-heart {
+    font-size: 1.2rem;
+  }
 }
