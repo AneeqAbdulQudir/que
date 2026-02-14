@@ -213,7 +213,7 @@ function App() {
               >
                 Will you be my
                 <br />
-                <span className="highlight-name">Valentine, Minnu?</span>
+                <span className="highlight-name">Valentine ???</span>
               </motion.h1>
 
               <motion.p
@@ -344,7 +344,7 @@ function App() {
                   <Plane className="plane-icon" size={30} />
                   <h3 className="dubai-title">PS: About Dubai...</h3>
                   <p className="dubai-text">
-                    Pack your bags, we're going to Dubai! 🙄
+                    Be Ready I May Come to Dubai! 🙄
                     <br />
                     <span className="dubai-joke">(Just kidding... unless? 😏)</span>
                   </p>
